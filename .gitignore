@@ -1,0 +1,12 @@
+output
+*.log
+*.temp
+.idea/
+script/settings.pyc
+__debug_bin
+.vscode/
+idl/
+vendor/
+.DS_Store
+script/__pycache__/settings.cpython-311.pyc
+.mocka
