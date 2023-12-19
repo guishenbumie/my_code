@@ -49,40 +49,90 @@ func main() {
 }
 
 func minWindow(s string, t string) string {
-	ori, cnt := map[byte]int{}, map[byte]int{}
+	need, window := map[byte]int{}, map[byte]int{}
 	for i := 0; i < len(t); i++ {
-		ori[t[i]]++
+		c := t[i]
+		need[c]++
 	}
 
-	sLen := len(s)
-	len := math.MaxInt32
-	ansL, ansR := -1, -1
+	left, right := 0, 0
+	valid := 0
 
-	check := func() bool {
-		for k, v := range ori {
-			if cnt[k] < v {
-				return false
+	//记录最小覆盖字串的起始索引及长度
+	start := 0
+	length := math.MaxInt32
+	for right < len(s) {
+		c := s[right] //移入窗口的字符
+		right++       //右移窗口
+
+		//进行窗口内一系列数据更新
+		if _, ok := need[c]; ok {
+			window[c]++
+			if window[c] == need[c] {
+				valid++
 			}
 		}
-		return true
+
+		//判断左侧窗口是否要收紧
+		for valid == len(need) {
+			//更新最小覆盖字串
+			if right-left < length {
+				start = left
+				length = right - left
+			}
+			//d是将移出窗口的字符
+			d := s[left]
+			left++
+			if _, ok := need[d]; ok {
+				if window[d] == need[d] {
+					valid--
+				}
+				window[d]--
+			}
+		}
 	}
-	for l, r := 0, 0; r < sLen; r++ {
-		if r < sLen && ori[s[r]] > 0 {
-			cnt[s[r]]++
-		}
-		for check() && l <= r {
-			if r-l+1 < len {
-				len = r - l + 1
-				ansL, ansR = l, l+len
-			}
-			if _, ok := ori[s[l]]; ok {
-				cnt[s[l]] -= 1
-			}
-			l++
-		}
-	}
-	if ansL == -1 {
+
+	if length == math.MaxInt32 {
 		return ""
 	}
-	return s[ansL:ansR]
+	return s[start : start+length]
 }
+
+//func minWindow(s string, t string) string {
+//	ori, cnt := map[byte]int{}, map[byte]int{}
+//	for i := 0; i < len(t); i++ {
+//		ori[t[i]]++
+//	}
+//
+//	sLen := len(s)
+//	len := math.MaxInt32
+//	ansL, ansR := -1, -1
+//
+//	check := func() bool {
+//		for k, v := range ori {
+//			if cnt[k] < v {
+//				return false
+//			}
+//		}
+//		return true
+//	}
+//	for l, r := 0, 0; r < sLen; r++ {
+//		if r < sLen && ori[s[r]] > 0 {
+//			cnt[s[r]]++
+//		}
+//		for check() && l <= r {
+//			if r-l+1 < len {
+//				len = r - l + 1
+//				ansL, ansR = l, l+len
+//			}
+//			if _, ok := ori[s[l]]; ok {
+//				cnt[s[l]] -= 1
+//			}
+//			l++
+//		}
+//	}
+//	if ansL == -1 {
+//		return ""
+//	}
+//	return s[ansL:ansR]
+//}

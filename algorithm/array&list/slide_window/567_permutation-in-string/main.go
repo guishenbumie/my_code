@@ -43,6 +43,7 @@ func checkInclusion(s1 string, s2 string) bool {
 	for right < len(s2) {
 		c := s2[right]
 		right++
+		//进行窗口内的数据更新
 		if _, ok := need[c]; ok {
 			window[c]++
 			if window[c] == need[c] {
@@ -50,12 +51,16 @@ func checkInclusion(s1 string, s2 string) bool {
 			}
 		}
 
+		//判断左侧窗口是否要收紧
 		for right-left >= len(s1) {
+			//判断是否找到了合法的子串
 			if valid == len(need) {
 				return true
 			}
+
 			d := s2[left]
 			left++
+			//进行窗口内的数据更新
 			if _, ok := need[d]; ok {
 				if window[d] == need[d] {
 					valid--

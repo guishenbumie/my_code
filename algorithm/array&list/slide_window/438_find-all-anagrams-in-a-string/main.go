@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /* 找到字符串中所有字母异位词 */
 
 //给定两个字符串 s 和 p，找到 s 中所有 p 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
@@ -31,9 +33,44 @@ package main
 //s 和 p 仅包含小写字母
 
 func main() {
-
+	fmt.Println(findAnagrams("cbaebabacd", "abc"))
+	fmt.Println(findAnagrams("abab", "ab"))
 }
 
 func findAnagrams(s string, p string) []int {
-	return nil
+	need, window := map[byte]int{}, map[byte]int{}
+	for i := 0; i < len(p); i++ {
+		c := p[i]
+		need[c]++
+	}
+
+	arr := make([]int, 0)
+	left, right := 0, 0
+	valid := 0
+	for right < len(s) {
+		c := s[right]
+		right++
+		if _, ok := need[c]; ok {
+			window[c]++
+			if window[c] == need[c] {
+				valid++
+			}
+		}
+
+		for right-left >= len(p) {
+			if valid == len(need) {
+				arr = append(arr, left)
+			}
+			d := s[left]
+			left++
+			if _, ok := need[d]; ok {
+				if window[d] == need[d] {
+					valid--
+				}
+				window[d]--
+			}
+		}
+	}
+
+	return arr
 }
