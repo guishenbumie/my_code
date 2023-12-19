@@ -1,6 +1,9 @@
 package main
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 /* 最小覆盖子串 */
 
@@ -40,7 +43,9 @@ import "math"
 //s 和 t 由英文字母组成
 
 func main() {
-
+	fmt.Println(minWindow("ADOBECODEBANC", "ABC"))
+	fmt.Println(minWindow("a", "a"))
+	fmt.Println(minWindow("a", "aa"))
 }
 
 func minWindow(s string, t string) string {
