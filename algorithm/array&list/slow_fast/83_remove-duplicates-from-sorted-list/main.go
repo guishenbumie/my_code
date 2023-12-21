@@ -49,7 +49,7 @@ type ListNode struct {
 
 func Constructor(nums []int) *ListNode {
 	if len(nums) <= 0 {
-		return &ListNode{}
+		return nil
 	}
 
 	head := &ListNode{}
