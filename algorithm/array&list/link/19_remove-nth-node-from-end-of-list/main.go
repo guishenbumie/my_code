@@ -32,7 +32,12 @@ import "fmt"
 //1 <= n <= sz
 
 func main() {
-
+	l1 := Constructor([]int{1, 2, 3, 4, 5})
+	fmt.Println(removeNthFromEnd(l1, 2).ToString())
+	l2 := Constructor([]int{1})
+	fmt.Println(removeNthFromEnd(l2, 1).ToString())
+	l3 := Constructor([]int{1, 2})
+	fmt.Println(removeNthFromEnd(l3, 1).ToString())
 }
 
 /**
@@ -82,10 +87,33 @@ func (h *ListNode) ToString() string {
 }
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-
+	temp := &ListNode{
+		Val:  -1,
+		Next: head,
+	}
+	l := findFromEnd(temp, n+1)
+	l.Next = l.Next.Next
+	return temp.Next
 }
 
-//返回链表的倒数第n个点
+// 返回链表的倒数第n个点
+//
+// 暴力：
+// 遍历两次，第一次遍历整个list，得到list的总长度length；
+// 倒数第n个点就是length-n，所以找到倒数第n个点的需要再遍历一次找到length-n就是目标元素；
+//
+// 更好的方式是双指针方法：
+// 第一个指针遍历到n
+// 第二个指针和第一个指针再同时遍历，直到第一个指针走到链表尾部null，第二个指针所在的位置就是length-n的目标元素所在位置
 func findFromEnd(head *ListNode, n int) *ListNode {
-
+	l1 := head
+	for i := 0; i < n; i++ {
+		l1 = l1.Next
+	}
+	l2 := head
+	for l1 != nil {
+		l2 = l2.Next
+		l1 = l1.Next
+	}
+	return l2
 }
