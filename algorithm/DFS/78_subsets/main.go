@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+/* 子集 */
+
 func main() {
 	fmt.Println(subsets([]int{1, 2, 3}))
 }
