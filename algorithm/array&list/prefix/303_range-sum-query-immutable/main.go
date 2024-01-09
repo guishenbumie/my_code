@@ -68,10 +68,10 @@ func (this *NumArray) SumRange(left int, right int) int {
 	if left < 0 || right >= len(this.nums) {
 		return 0
 	}
-	var sum int
+	var n_sum int
 	for i := left; i <= right; i++ {
-		sum += this.nums[i]
+		n_sum += this.nums[i]
 	}
-	return sum
+	return n_sum
 }
 */
