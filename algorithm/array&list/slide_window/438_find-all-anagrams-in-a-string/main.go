@@ -74,3 +74,43 @@ func findAnagrams(s string, p string) []int {
 
 	return arr
 }
+
+//func findAnagrams(s string, p string) []int {
+//	need, windows := map[byte]int{}, map[byte]int{}
+//	for i := 0; i < len(p); i++ {
+//		need[p[i]]++
+//	}
+//
+//	res := []int{}
+//
+//	left, right := 0, 0
+//	valid := 0
+//	for right < len(s) {
+//		c := s[right]
+//		right++
+//
+//		if need[c] > 0 {
+//			windows[c]++
+//			if need[c] == windows[c] {
+//				valid++
+//			}
+//		}
+//
+//		for right-left >= len(p) {
+//			if valid == len(need) {
+//				res = append(res, left)
+//			}
+//			d := s[left]
+//			left++
+//
+//			if need[d] > 0 {
+//				if need[d] == windows[d] {
+//					valid--
+//				}
+//				windows[d]--
+//			}
+//		}
+//	}
+//
+//	return res
+//}

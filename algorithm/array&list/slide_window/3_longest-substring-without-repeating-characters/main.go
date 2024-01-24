@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /* 无重复字符的最长子串 */
 
@@ -51,10 +54,34 @@ func lengthOfLongestSubstring(s string) int {
 			left++
 			window[d]--
 		}
-		diff := right - left
-		if res < diff {
-			res = diff
-		}
+		//diff := right - left
+		//if res < diff {
+		//	res = diff
+		//}
+		res = int(math.Max(float64(res), float64(right-left)))
 	}
 	return res
 }
+
+//func lengthOfLongestSubstring(s string) int {
+//	windows := map[byte]int{}
+//	left, right := 0, 0
+//	res := 0
+//	for right < len(s) {
+//		c := s[right]
+//		right++
+//		windows[c]++
+//
+//		for windows[c] > 1 {
+//			d := s[left]
+//			left++
+//			windows[d]--
+//		}
+//
+//		diff := right - left
+//		if diff > res {
+//			res = diff
+//		}
+//	}
+//	return res
+//}
