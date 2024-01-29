@@ -186,3 +186,28 @@ func (h *hp) Pop() any {
 	*h = a[:len(a)-1]
 	return v
 }
+
+//type HP []*ListNode
+//
+//func (h HP) Len() int {
+//	return len(h)
+//}
+//
+//func (h HP) Less(i, j int) bool {
+//	return h[i].Val < h[j].Val
+//}
+//
+//func (h HP) Swap(i, j int) {
+//	h[i], h[j] = h[j], h[i]
+//}
+//
+//func (h *HP) Push(v any) {
+//	*h = append(*h, v.(*ListNode))
+//}
+//
+//func (h *HP) Pop() any {
+//	old := *h
+//	v := old[len(old)-1]
+//	*h = old[:len(old)-1]
+//	return v
+//}

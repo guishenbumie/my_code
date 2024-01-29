@@ -119,3 +119,16 @@ func reverseN(head *ListNode, n int) (*ListNode, *ListNode) {
 	head.Next = successor
 	return last, successor
 }
+
+//func reverseN(head *ListNode, n int) (*ListNode, *ListNode) {
+//	if head == nil {
+//		return nil, nil
+//	}
+//	if n == 1 {
+//		return head, head.Next
+//	}
+//	last, next := reverseN(head.Next, n-1)
+//	head.Next.Next = head
+//	head.Next = next
+//	return last, next
+//}

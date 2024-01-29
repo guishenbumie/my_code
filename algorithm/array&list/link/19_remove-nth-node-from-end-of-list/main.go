@@ -87,13 +87,13 @@ func (h *ListNode) ToString() string {
 }
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	temp := &ListNode{
+	dummy := &ListNode{
 		Val:  -1,
 		Next: head,
 	}
-	l := findFromEnd(temp, n+1)
+	l := findFromEnd(dummy, n+1)
 	l.Next = l.Next.Next
-	return temp.Next
+	return dummy.Next
 }
 
 // 返回链表的倒数第n个点
@@ -105,9 +105,9 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 // 更好的方式是双指针方法：
 // 第一个指针遍历到n
 // 第二个指针和第一个指针再同时遍历，直到第一个指针走到链表尾部null，第二个指针所在的位置就是length-n的目标元素所在位置
-func findFromEnd(head *ListNode, n int) *ListNode {
+func findFromEnd(head *ListNode, k int) *ListNode {
 	l1 := head
-	for i := 0; i < n; i++ {
+	for i := 0; i < k; i++ {
 		l1 = l1.Next
 	}
 	l2 := head
