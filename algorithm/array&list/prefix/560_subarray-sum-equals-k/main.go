@@ -30,7 +30,7 @@ func main() {
 
 func subarraySum(nums []int, k int) int {
 	count, pre := 0, 0
-	m := map[int]int{}
+	m := map[int]int{} //k=前缀和，v=个数
 	m[0] = 1
 	for i := 0; i < len(nums); i++ {
 		pre += nums[i]
