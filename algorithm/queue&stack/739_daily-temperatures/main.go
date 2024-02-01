@@ -67,22 +67,17 @@ func nextGreaterElement(nums []int) []int {
 	//倒着往栈里放
 	for i := len(nums) - 1; i >= 0; i-- {
 		//判断个子高矮
-		for len(stack) > 0 {
-			top := stack[len(stack)-1]
+		for len(stack) > 0 && nums[stack[len(stack)-1]] <= nums[i] {
 			//矮个丢掉，因为被挡着了
-			if top <= nums[i] {
-				nums = nums[:len(stack)-1]
-			} else {
-				break
-			}
+			stack = stack[:len(stack)-1]
 		}
 
 		if len(stack) <= 0 { //后面没有比自己高的
 			res[i] = -1
 		} else {
-			res[i] = stack[len(stack)-1]
+			res[i] = stack[len(stack)-1] - i
 		}
-		stack = append(stack, nums[i])
+		stack = append(stack, i)
 	}
 	return res
 }
