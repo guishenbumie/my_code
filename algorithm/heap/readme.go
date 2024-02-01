@@ -48,7 +48,7 @@ func main() {
 	}
 }
 
-// 堆
+// 堆，参考295题的写法吧
 type IntHeap []int
 
 func (h IntHeap) Len() int           { return len(h) }
