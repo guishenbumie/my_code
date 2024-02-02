@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /* 二叉树的最大深度 */
 
@@ -53,11 +56,28 @@ func maxDepth(root *TreeNode) int {
 		}
 		leftMax := traverse(root.Left)
 		rightMax := traverse(root.Right)
-		max := rightMax
-		if leftMax > rightMax {
-			max = leftMax
-		}
+		//max := rightMax
+		//if leftMax > rightMax {
+		//	max = leftMax
+		//}
+		max := int(math.Max(float64(leftMax), float64(rightMax)))
 		return max + 1
 	}
 	return traverse(root)
 }
+
+//func maxDepth(root *TreeNode) int {
+//	depth, ans := 0, 0
+//	var traverse func(root *TreeNode)
+//	traverse = func(root *TreeNode) {
+//		if root == nil {
+//			return
+//		}
+//		depth++
+//		ans = int(math.Max(float64(ans), float64(depth)))
+//		traverse(root.Left)
+//		traverse(root.Right)
+//		depth--
+//	}
+//	return ans
+//}

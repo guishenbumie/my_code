@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /* LRU 缓存 */
+
+//和LCR031题一样，看LCR的写法吧，用了goland的list库，更简单清晰
 
 //请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。
 //实现 LRUCache 类：
