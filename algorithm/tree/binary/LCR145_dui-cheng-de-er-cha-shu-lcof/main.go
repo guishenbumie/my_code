@@ -1,7 +1,8 @@
 package main
 
-/* 对称二叉树 */
+/* 判断对称二叉树 */
 
+// 和101题一样
 func main() {
 
 }
@@ -20,26 +21,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// //递归方式
-// func isSymmetric(root *TreeNode) bool {
-//     var traverse func(n1, n2 *TreeNode) bool
-//     traverse = func(n1, n2 *TreeNode) bool {
-//         if n1 == nil && n2 == nil {
-//             return true
-//         }
-//         if n1 == nil || n2 == nil {
-//             return false
-//         }
-//         if n1.Val != n2.Val {
-//             return false
-//         }
-//         return traverse(n1.Left, n2.Right) && traverse(n1.Right, n2.Left)
-//     }
-//     return traverse(root, root)
-// }
-
-// 迭代方式
-func isSymmetric(root *TreeNode) bool {
+func checkSymmetricTree(root *TreeNode) bool {
 	n1, n2 := root, root
 	q := []*TreeNode{}
 	q = append(q, n1)
