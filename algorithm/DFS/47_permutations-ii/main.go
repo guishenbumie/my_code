@@ -54,7 +54,7 @@ func permuteUnique(nums []int) [][]int {
 			}
 			path = append(path, nums[j])
 			used[j] = true
-			dfs(j + 1)
+			dfs(i + 1)
 			path = path[:len(path)-1]
 			used[j] = false
 		}

@@ -5,6 +5,8 @@ import (
 	"math"
 )
 
+/* 二叉树中的最大路径和 */
+
 func main() {
 	r1 := &TreeNode{
 		Val: 1,

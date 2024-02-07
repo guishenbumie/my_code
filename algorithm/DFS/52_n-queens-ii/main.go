@@ -2,11 +2,13 @@ package main
 
 import "strings"
 
+/* N 皇后 II */
+
 func main() {
 
 }
 
-func solveNQueens(n int) [][]string {
+func totalNQueens(n int) int {
 	ans := [][]string{}
 	board := make([]string, n)
 	for i := 0; i < n; i++ {
@@ -36,7 +38,7 @@ func solveNQueens(n int) [][]string {
 		}
 	}
 	backtrack(board, 0)
-	return ans
+	return len(ans)
 }
 
 func isValid(board []string, row, col int) bool {

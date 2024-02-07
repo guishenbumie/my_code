@@ -10,10 +10,6 @@ func main() {
 
 }
 
-func d(s string) {
-	s = s + s
-}
-
 func numDistinctIslands(grid [][]int) int {
 	m := len(grid)
 	n := len(grid[0])
