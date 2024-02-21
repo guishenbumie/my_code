@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /* 两个字符串的最小ASCII删除和 */
 
@@ -38,13 +41,10 @@ func minimumDeleteSum(s1 string, s2 string) int {
 		if s1[i] == s2[j] {
 			memo[i][j] = dp(s1, i+1, s2, j+1)
 		} else {
-			temp1 := int(s1[i]) + dp(s1, i+1, s2, j)
-			temp2 := int(s2[j]) + dp(s1, i, s2, j+1)
-			if temp1 > temp2 {
-				memo[i][j] = temp2
-			} else {
-				memo[i][j] = temp1
-			}
+			memo[i][j] = int(math.Min(
+				float64(int(s1[i])+dp(s1, i+1, s2, j)),
+				float64(int(s2[j])+dp(s1, i, s2, j+1)),
+			))
 		}
 		return memo[i][j]
 	}

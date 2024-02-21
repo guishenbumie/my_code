@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /* 最长公共子序列 */
 
@@ -77,14 +80,10 @@ func longestCommonSubsequence(text1 string, text2 string) int {
 			if c1[i-1] == c2[j-1] {
 				dp[i][j] = 1 + dp[i-1][j-1]
 			} else {
-				temp1 := dp[i][j-1]
-				temp2 := dp[i-1][j]
-				if temp1 > temp2 {
-					dp[i][j] = temp1
-				} else {
-					dp[i][j] = temp2
-
-				}
+				dp[i][j] = int(math.Max(
+					float64(dp[i-1][j]),
+					float64(dp[i][j-1]),
+				))
 			}
 		}
 	}
