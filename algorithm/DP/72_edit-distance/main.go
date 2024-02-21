@@ -28,7 +28,7 @@ func minDistance(word1 string, word2 string) int {
 		for j := 1; j <= n; j++ {
 			if c1[i-1] == c2[j-1] {
 				dp[i][j] = dp[i-1][j-1]
-			} else {
+			} else { //dp[i-1][j-1] 表示替换操作，dp[i-1][j] 表示删除操作，dp[i][j-1] 表示插入操作
 				dp[i][j] = min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+1)
 			}
 		}

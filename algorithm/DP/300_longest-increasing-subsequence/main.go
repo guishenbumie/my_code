@@ -8,10 +8,10 @@ import (
 /* 最长递增子序列 */
 
 func main() {
-	//arr := []int{1, 2, 3, 5}
-	//fmt.Println(sort.SearchInts(arr, 2))
-	//fmt.Println(sort.SearchInts(arr, 4))
-	//fmt.Println(sort.SearchInts(arr, 6))
+	arr := []int{1, 2, 3, 5}
+	fmt.Println(sort.SearchInts(arr, 2))
+	fmt.Println(sort.SearchInts(arr, 4))
+	fmt.Println(sort.SearchInts(arr, 6))
 	//fmt.Println(lengthOfLIS([]int{10, 9, 2}))
 	fmt.Println(lengthOfLIS([]int{10, 9, 2, 5, 3, 7, 101, 18, 1}))
 	fmt.Println(lengthOfLIS([]int{10, 9, 2, 5, 3, 7, 101, 18}))
