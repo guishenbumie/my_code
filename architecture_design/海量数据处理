@@ -1,0 +1,17 @@
+在10亿个数中，找到最大的10个：
+
+首先读入前10个数来创建大小为10的最小堆,建堆的时间复杂度为O(mlogm)(m为数组的大小即为10)
+然后遍历后续的数字,并于堆顶(最小)数字进行比较。
+    如果比最小的数小,则继续读取后续数字;
+    如果比堆顶数字大,则替换堆顶元素并重新调整堆为最小堆。
+整个过程直至1亿个数全部遍历完为止。然后按照中序遍历的方式输出当前地谁中的所有10个数字。
+该算法的时间复杂度为O(nmloam),空间复复杂度是10(常数)
+
+常见类似题目处理方案：
+1.堆，就是上面的例子
+2.分治+堆+归并：将数据hash然后取模1000，分到1000个文件中，然后对每个文件使用堆查出最大的10个数，然后将这1000*10个数再进行归并排序，找出结果
+3.hash+堆：对于要统计频率的问题，先通过hash计算出各个关键词的频率，然后通过堆找出频率最高的几个
+4.bit-map，通过位的flag找出海量数据中的重复数据或者搜索指定数据是否在海量数据中
+5.bloom filter，有错误率
+
+更多题目和答案：https://blog.csdn.net/w_h_guang/article/details/83281150?spm=1001.2101.3001.6650.17&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-83281150-blog-47686867.235%5Ev43%5Epc_blog_bottom_relevance_base1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-17-83281150-blog-47686867.235%5Ev43%5Epc_blog_bottom_relevance_base1&utm_relevant_index=26
