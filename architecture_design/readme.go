@@ -11,3 +11,7 @@ func main() {
 //4.https://www.yoodb.com/interview/31/3025.html（这个类似小林coding博客站，有很多方面的面试题）
 //5.https://www.modb.pro/db/135068
 //6.https://javaguide.cn/（4有的文章要在公众号上看，这个有些要付费。。。）
+
+//1.https://soulmachine.gitbooks.io/system-design/content/cn/
+//2.https://github.com/CyC2018/CS-Notes?tab=readme-ov-file
+//3.https://www.topgoer.cn/docs/interview/interview-1dks7os61lo44
